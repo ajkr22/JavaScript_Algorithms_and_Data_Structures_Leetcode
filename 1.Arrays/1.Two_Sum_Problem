@@ -1,0 +1,26 @@
+function bruteForceTwoSum(array, sum){
+    let nums = []
+    
+    let prevNums = []
+
+    for(let x in array){
+        for(let y in array){
+            if (array[x] + array[y] === sum){
+                if(!!nums.length){ 
+                    if (!prevNums.includes(array[x]) && !prevNums.includes(array[y])) {
+                        prevNums.push(array[x])
+                        nums.push([array[x], array[y]])
+                    } 
+                } else {
+                    nums.push([array[x], array[y]])
+                    prevNums.push(array[x])
+                }
+            }
+        }
+    }
+   return nums
+}
+
+let array = [2, 3, 4, 3, 6, 7]
+let sum = 6
+console.log(bruteForceTwoSum(array, sum))
